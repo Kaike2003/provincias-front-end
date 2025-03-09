@@ -15,10 +15,10 @@ export default function Home() {
           query: gql`
             {
               provincias {
-                capital
-                nome
-                site_governo_provincial
-                fundada
+                governador {
+                  data_nomeacao
+                  nome
+                }
               }
             }
           `,
@@ -37,10 +37,9 @@ export default function Home() {
       <h1>Provincias de Angola</h1>
       {provincias.map((provincia, index) => (
         <div key={index} className="flex flex-row gap-6">
-          <p>{provincia.nome}</p>
-          <p>{provincia.capital}</p>
-          <p>{provincia.fundada}</p>
-          <p>{provincia.site_governo_provincial}</p>
+          <p>{provincia.governador.nome}</p>
+          <p>{provincia.governador.data_nomeacao}</p>
+          <p>{provincia.provincia}</p>
         </div>
       ))}
     </>
